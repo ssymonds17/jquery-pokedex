@@ -68,30 +68,14 @@ var pokemonRepository = (function () {
    }).catch(function(error) {
      console.write(error);
    });
-   // })
-   //
-   //
-   // return fetch(apiUrl).then(function (response) {
-   //   return response.json();
-   // }).then(function (json) {
-   //   json.results.forEach(function (item) {
-   //     var pokemon = {
-   //       name: item.name.charAt(0).toUpperCase() + item.name.slice(1),
-   //       detailsUrl: item.url
-   //     };
-   //     add(pokemon);
-   //   });
-   // }).catch(function (e) {
-   //   console.error(e);
-   // })
  }
 
 // Load details of each Pokemon that is clicked
  function loadDetails(item) {
    var url = item.detailsUrl;
-   return fetch(url).then(function (response) {
-     return response.json();
-   }).then(function (details) {
+   // Changed fetch to ajax
+   return $.ajax(url)
+   .then(function(details) {
      // Now we add details to the item
      item.imageUrl = details.sprites.front_default;
      item.height = details.height;
@@ -101,8 +85,8 @@ var pokemonRepository = (function () {
 		} else {
 			item.types = [details.types[0].type.name];
 		}
-   }).catch(function (e) {
-     console.error(e);
+  }).catch(function(error) {
+     console.error(error);
    });
  }
 
