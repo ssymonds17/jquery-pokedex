@@ -2,15 +2,12 @@
 var pokemonRepository = (function () {
  var repository = [];
  // Creates variable for index 'ul' with pokemonList class
- var $pokemonList = $('ul');
- var $modalContainer = $('#modal-container');
  var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
 // Adds new Pokemon to var repository
  function add(pokemon) {
    repository.push(pokemon);
  }
-
 
 // Function used to return Pokemon object array
  function catchAll() {
@@ -28,16 +25,16 @@ var pokemonRepository = (function () {
 
 // Function to add a list for each Pokemon object
  function addListItem(pokemon) {
-   // create 'li'
+   // Define list group
+   var $pokemonList = $('.list-group');
+   // Create list items
    var $listItem = $('<li></li>');
    // Add 'li' to $pokemonList
    $pokemonList.append($listItem);
    // Create button with class and inner text as pokemon.name
-   var $button = $('<button>');
-   // Add inner text to button
+   var $button = $('<button type="button" data-toggle="modal" data-target="#pokemonModal"</button>');
+   // Add Pokemon name to button
    $button.text(pokemon.name);
-   // Add class to button
-   $button.addClass('pokemon-name');
    // Add button to 'li'
    $listItem.append($button);
    // Calls showDetails function when button is clicked
@@ -93,58 +90,18 @@ var pokemonRepository = (function () {
 
  // Function to show modal for Pokemon data
  function showModal(item) {
-
-   // $modalContainer.empty();
-   $modalContainer.html('');
-
-   var $modal = $('<div class="modal"></div>');
-
-   var $closeButtonElement = $('<button class="modal-close">Close</button');
-   $closeButtonElement.on('click', function() {
-     hideModal();
-   })
-
-   var $nameElement = $('<h1>');
+   var $nameElement = $('h5');
    $nameElement.html(item.name.charAt(0).toUpperCase() + item.name.slice(1));
 
    var $imageElement = $('<img src="' + item.imageUrl + '">');
-   $imageElement.addClass('modal-img');
+   $('div.pokemon-img').html($imageElement);
 
-   var $heightElement = $('<p>Height: ' + item.height + 'm</p>');
+   var $heightElement = $('div.pokemon-height');
+   $('div.pokemon-height').html('Height: ' + item.height + 'm');
 
-   var $typesElement = $('<p>Type(s): ' + item.types + '</p>');
-
-   $modal.append($closeButtonElement);
-   $modal.append($nameElement);
-   $modal.append($imageElement);
-   $modal.append($heightElement);
-   $modal.append($typesElement);
-   $modalContainer.append($modal);
-
-   $modalContainer.addClass('is-visible');
+   var $typesElement = $('div.pokemon-types');
+   $('div.pokemon-types').html('Type(s): ' + item.types);
  }
-
-// Function to close the modal
- function hideModal() {
-   $modalContainer.removeClass('is-visible');
- }
-
-// Press escape key to close modal
- $(document).on('keydown', function(event)  {
-   if (event.key === 'Escape' && $modalContainer.hasClass('is-visible')) {
-       hideModal();
-     }
-   });
-
-// Click outside of the modal to close the modal
-$modalContainer.on('click', function(event) {
-  // Since this is also triggered when clicking INSIDE the modal
-  // I only want the modal to close if the user clicks directly on the overlay
-  var target = event.target;
-  if (event.target === this) {
-    hideModal();
-  }
-});
 
  return {
    add: add,
@@ -155,7 +112,6 @@ $modalContainer.on('click', function(event) {
    loadList: loadList,
    loadDetails: loadDetails,
    showModal: showModal,
-   hideModal: hideModal
  };
 })();
 
