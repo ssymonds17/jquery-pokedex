@@ -40,7 +40,6 @@ button {
 }
 
 nav {
-  /* display: inline-flex; */
   background-color: #1E1D1D;
 }
 
@@ -65,10 +64,8 @@ nav {
 }
 
 .wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
-
+  width: 100%;
 }
 .wrapper li {
   display: flex;
@@ -99,8 +96,4 @@ li button {
 button:hover, button:focus {
   cursor: pointer;
   opacity: 0.8;
-}
-
-.wrapper {
-  width: 100%;
 }
