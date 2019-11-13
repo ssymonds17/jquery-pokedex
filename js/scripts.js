@@ -3,6 +3,7 @@ var pokemonRepository = (function () {
  var repository = [];
  // Creates variable for index 'ul' with pokemonList class
  var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+ /* global $*/
 
 // Adds new Pokemon to var repository
  function add(pokemon) {
@@ -64,6 +65,7 @@ var pokemonRepository = (function () {
        add(pokemon);
      });
    }).catch(function(error) {
+     /* eslint-disable no-console */
      console.write(error);
    });
  }
