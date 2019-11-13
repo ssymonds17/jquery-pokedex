@@ -64,9 +64,11 @@ nav {
 }
 
 .wrapper {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   width: 100%;
 }
+
 .wrapper li {
   display: flex;
   justify-content: center;
@@ -84,6 +86,37 @@ nav {
 li button {
   background-color: #8BE9CA;
   border: none;
+}
+
+.list-group {
+  margin: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-column-gap: 5px;
+}
+
+@media all and (max-width: 1310px) {
+  .list-group {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media all and (max-width: 1080px) {
+  .list-group {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media all and (max-width: 800px) {
+  .list-group {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media all and (max-width: 540px) {
+  .list-group {
+    grid-template-columns: 1fr;
+  }
 }
 
 .modal-body {
