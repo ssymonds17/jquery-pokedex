@@ -98,10 +98,8 @@ var pokemonRepository = (function () {
    var $imageElement = $('<img src="' + item.imageUrl + '">');
    $('div.pokemon-img').html($imageElement);
 
-   var $heightElement = $('div.pokemon-height');
    $('div.pokemon-height').html('Height: ' + item.height + 'm');
 
-   var $typesElement = $('div.pokemon-types');
    $('div.pokemon-types').html('Type(s): ' + item.types);
  }
 
