@@ -92,7 +92,7 @@ var pokemonRepository = (function () {
 
  // Function to show modal for Pokemon data
  function showModal(item) {
-
+   // Removes the html from the modal so it is clear when it is reopened
    $('#modal-body').html('');
 
    var $nameElement = $('h5');
