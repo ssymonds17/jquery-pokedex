@@ -92,6 +92,9 @@ var pokemonRepository = (function () {
 
  // Function to show modal for Pokemon data
  function showModal(item) {
+
+   $('#modal-body').html('');
+
    var $nameElement = $('h5');
    $nameElement.html(item.name.charAt(0).toUpperCase() + item.name.slice(1));
 
