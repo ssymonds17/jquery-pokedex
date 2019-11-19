@@ -26,19 +26,19 @@ var pokemonRepository = (function () {
 
 // Function to add a list for each Pokemon object
  function addListItem(pokemon) {
-   // Define list group
+ //   // Define list group
    var $pokemonList = $('.list-group');
-   // Create list items
-   var $listItem = $('<li></li>');
-   // Add 'li' to $pokemonList
+ //   // Create list items
+   var $listItem = $('<li class="list-group-item"></li>');
+ //   // Add 'li' to $pokemonList
    $pokemonList.append($listItem);
-   // Create button with class and inner text as pokemon.name
+ //   // Create button with class and inner text as pokemon.name
    var $button = $('<button type="button" data-toggle="modal" data-target="#pokemonModal"</button>');
-   // Add Pokemon name to button
+ //   // Add Pokemon name to button
    $button.text(pokemon.name);
-   // Add button to 'li'
+ //   // Add button to 'li'
    $listItem.append($button);
-   // Calls showDetails function when button is clicked
+ //   // Calls showDetails function when button is clicked
    $button.on('click', function () {
      // showModal(pokemon);
      showDetails(pokemon);
